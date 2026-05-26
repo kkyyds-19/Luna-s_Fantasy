@@ -1,4 +1,4 @@
-import { _decorator, Animation, animation, AudioClip, Component, game, Node, Prefab } from 'cc';
+﻿import { _decorator, Animation, animation, AudioClip, Component, game, Node, Prefab } from 'cc';
 import { GameManager } from './GameManager';
 const { ccclass, property } = _decorator;
 
@@ -18,7 +18,7 @@ export class Dog extends Component {
         GameManager.Instance.hasPetTheDog=true;
         GameManager.Instance.setContentIndex();
         this.starEffect.destroy();
-        //TODO:播放音效
+        
         GameManager.Instance.playSound(this.petSound);
         this.scheduleOnce(()=>{
             GameManager.Instance.canControlLuna=true;

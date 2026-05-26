@@ -1,4 +1,4 @@
-import { _decorator, Button, Component, Label, Node } from 'cc';
+﻿import { _decorator, Button, Component, Label, Node } from 'cc';
 import { GameManager } from './GameManager';
 const { ccclass, property } = _decorator;
 

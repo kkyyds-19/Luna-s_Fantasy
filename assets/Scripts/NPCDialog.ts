@@ -1,4 +1,4 @@
-import { _decorator, Animation, animation, Component, Node } from 'cc';
+﻿import { _decorator, Animation, animation, Component, Node } from 'cc';
 import { GameManager } from './GameManager';
 import { UIManager } from './UIManager';
 const { ccclass, property } = _decorator;
@@ -7,15 +7,15 @@ const { ccclass, property } = _decorator;
 export class NPCDialog extends Component {
     private dialogInfoList: DialogInfo[][];
     @property(Number)
-    contentIndex: number = 0;//当前对话内容(小段)索引
+    contentIndex: number = 0;
     @property(animation.AnimationController)
     animationController: animation.AnimationController = null;
     start() {
-        // this.animationController=this.node.getComponent(animation.AnimationController);
+        
         this.dialogInfoList = [
-            //0
+            
             [{ name: "Luna", content: "(,,･∀･)ﾉ゛hello，我是Luna，你可以用上下左右控制我移动，空格键与NPC进行对话，战斗中需要简单点击按钮执行相应行为" }],
-            //1
+            
             [
                 { name: "Nala", content: "好久不见了，小猫咪(*ΦωΦ*)，Luna~" },
                 { name: "Luna", content: "好久不见，Nala,你还是那么有活力，哈哈" },
@@ -28,11 +28,11 @@ export class NPCDialog extends Component {
                 { name: "Luna", content: "我是猫女郎啊" },
                 { name: "Nala", content: "安心啦，不会咬你哒，去吧去吧~" }
             ],
-            //2
+            
             [
                 { name: "Nala", content: "他还在叫呢" }
             ],
-            //3
+            
             [
                 { name: "Nala", content: "感谢你呐，Luna，你还是那么可靠！" },
                 { name: "Nala", content: "我想请你帮个忙好吗" },
@@ -46,11 +46,11 @@ export class NPCDialog extends Component {
                 { name: "Luna", content: "神器？(¯﹃¯)" },
                 { name: "Nala", content: "是的，我感觉很适合你，加油呐~" },
             ],
-            //4
+            
             [
                 { name: "Nala", content: "你还没帮我收集到所有的蜡烛，宝~" },
             ],
-            //5
+            
             [
                 { name: "Nala", content: "可靠啊！竟然一个不差的全收集回来了" },
                 { name: "Luna", content: "你知道多累吗？" },
@@ -71,16 +71,16 @@ export class NPCDialog extends Component {
                 { name: "Luna", content: "哎，行吧，谁让你大呢~" },
                 { name: "Nala", content: "嘻嘻，那辛苦宝子啦" }
             ],
-            //6
+            
             [
                 { name: "Nala", content: "宝，你还没清理干净呢,这样我不方便嘛~" },
             ],
-            //7
+            
             [
                 { name: "Nala", content: "真棒，luna，周围的居民都会十分感谢你的，有机会来我家喝一杯吧~" },
                 { name: "Luna", content: "我觉得可行，哈哈~" }
             ],
-            //8
+            
             [
                 { name: "Nala", content: "改天再见喽~" },
             ],
@@ -91,7 +91,7 @@ export class NPCDialog extends Component {
     displayDialog() {
         if (GameManager.Instance.dialogInfoIndex > 8) return;
         if (this.contentIndex >= this.dialogInfoList[GameManager.Instance.dialogInfoIndex].length) {
-            //任务判定
+            
             if (GameManager.Instance.dialogInfoIndex == 2 && !GameManager.Instance.hasPetTheDog) { }
             else if (GameManager.Instance.dialogInfoIndex == 4 && GameManager.Instance.candleNum < 5) { }
             else if (GameManager.Instance.dialogInfoIndex == 6 && GameManager.Instance.killNum < 4) { }
@@ -100,10 +100,10 @@ export class NPCDialog extends Component {
                 GameManager.Instance.dialogInfoIndex++;
             }
             if (GameManager.Instance.dialogInfoIndex == 6) {
-                //TODO:显示怪物
+                
                 GameManager.Instance.showMonster();
             }
-            //当前对话已结束
+            
             this.contentIndex = 0;
             UIManager.Instance.showDialog();
             GameManager.Instance.canControlLuna = true;
@@ -114,16 +114,14 @@ export class NPCDialog extends Component {
             this.animationController.setValue("Talk", true);
         }
     }
-    /**
- * 设置当前对话索引
- */
+    
     setContentIndex() {
         this.contentIndex =this.dialogInfoList[GameManager.Instance.dialogInfoIndex].length;
     }
 
 }
 
-/// 对话信息
+
 interface DialogInfo {
     name: string;
     content: string;

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include("parts/head", {head}) %>
+  <script src="mraid.js"></script>
+</head>
+
+<body>
+  <%- include("parts/body", {body})%>
+  <script>
+    window.addEventListener("DOMContentLoaded", start);
+    window.onload = function () {
+      if (mraid.getState() === "loading") {
+        mraid.addEventListener("ready", onReadyCallback);
+      } else {
+        onReadyCallback();
+      }
+      //here you can put other code that not related to dapi logic
+    };
+
+    function onReadyCallback() {
+      //no need to listen to this event anymore
+      mraid.removeEventListener("ready", onReadyCallback);
+      var isAudioEnabled = mraid.getAudioVolume();
+      start()
+
+      mraid.addEventListener("exposureChange", exposureChangeCallback);
+      mraid.addEventListener("audioVolumeChange", audioVolumeChangeCallback);
+    }
+    var screenSize;
+    var isPaused = true;
+    function exposureChangeCallback(event) {
+      console.log("isViewable " + event);
+      if (event.exposedPercentage > 0) {
+        if (isPaused){
+          isPaused = false
+        }
+      }
+      screenSize = event.visibleRectangle;
+      console.log("ad was resized width " + event.width + " height " + event.height);
+    }
+
+    //When user clicks on the download button - use openStoreUrl function
+    function userClickedDownloadButton(event) {
+      mraid.openStoreUrl();
+    }
+
+    function audioVolumeChangeCallback(event) {
+      let isAudioEnabled = !!event;
+      console.log(event)
+      if (isAudioEnabled) {
+        //START or turn on the sound
+      } else {
+        //PAUSE the turn off the sound
+      }
+    }
+
+  </script>
+</body>
+
+</html>

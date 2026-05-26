@@ -1,4 +1,4 @@
-import { _decorator, Collider2D, Component, Contact2DType, IPhysics2DContact, Node } from 'cc';
+﻿import { _decorator, Collider2D, Component, Contact2DType, IPhysics2DContact, Node } from 'cc';
 import { TagGroup } from './TagGroup';
 import { LunaController } from './LunaController';
 const { ccclass, property } = _decorator;

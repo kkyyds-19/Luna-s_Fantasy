@@ -1,4 +1,4 @@
-import { _decorator, Component, director, Label, Node, Sprite, SpriteFrame, UITransform } from 'cc';
+﻿import { _decorator, Component, director, Label, Node, Sprite, SpriteFrame, UITransform } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('UIManager')
@@ -21,7 +21,7 @@ export class UIManager extends Component {
     nameLabel:Label=null;
     @property(Label)
     contentLabel:Label=null;
-    // 只能通过自身进行初始化
+    
     public static get Instance() { 
         return this._instance;
     }
@@ -39,10 +39,7 @@ export class UIManager extends Component {
             this.node.destroy();
         }
     }
-    /**
-     * 血条UI填充显示
-     * @param fillPercent 填充血条百分比
-     */
+    
     public SetHPValue(fillPercent:number){
       this.hpMask.width=this.originalwidth*fillPercent;
     }
@@ -52,13 +49,9 @@ export class UIManager extends Component {
     public showOrHideBattlePanel(show:boolean){
         this.battlePanelNode.active=show;
     }
-    /**
-     * 显示对话内容(含人物切换，名字更换，对话内容更换)
-     * @param name 人物名字
-     * @param content 对话内容
-     */
+    
     showDialog(name:string=null,content:string=null){
-        //关闭
+        
         if(content==null){
         this.TalkPanelNode.active=false;
         }else{
@@ -75,7 +68,7 @@ export class UIManager extends Component {
         }
 
     }
-    // 类的初始化改为私有
+    
     private constructor() {
     super();
     }

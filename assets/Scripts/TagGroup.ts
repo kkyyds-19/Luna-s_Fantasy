@@ -1,3 +1,3 @@
-export enum TagGroup{
+﻿export enum TagGroup{
     Luna=1,
 }

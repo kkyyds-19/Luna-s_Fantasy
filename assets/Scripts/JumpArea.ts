@@ -1,4 +1,4 @@
-import { _decorator, Collider2D, Component, Contact2DType, ERigidBody2DType, IPhysics2DContact, LOD, Node, RigidBody2D, tween, UITransform, v3, Vec2, Vec3 } from 'cc';
+﻿import { _decorator, Collider2D, Component, Contact2DType, ERigidBody2DType, IPhysics2DContact, LOD, Node, RigidBody2D, tween, UITransform, v3, Vec2, Vec3 } from 'cc';
 import { TagGroup } from './TagGroup';
 import { LunaController } from './LunaController';
 const { ccclass, property } = _decorator;
@@ -28,10 +28,10 @@ export class JumpArea extends Component {
             let disB = Vec3.distance(lunaController.node.worldPosition, this.jumpB.worldPosition);
             let targetTrans: Vec3;
             if (disA > disB) {
-                //玩家离A的距离大于离B的距离，所以这里玩家离B近，那么就需要玩家跳到A点
+                
                 targetTrans = lunaController.node.parent.getComponent(UITransform).convertToNodeSpaceAR(this.jumpA.worldPosition);
             } else {
-                //玩家离B的距离大于离A的距离，所以这里玩家离A近，那么就需要玩家跳到B点
+                
                 targetTrans = lunaController.node.parent.getComponent(UITransform).convertToNodeSpaceAR(this.jumpB.worldPosition);
             }
             tween()
